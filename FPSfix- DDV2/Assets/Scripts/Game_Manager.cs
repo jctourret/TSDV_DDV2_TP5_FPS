@@ -26,7 +26,27 @@ public class Game_Manager : MonoBehaviour
         }
         currentScene = SceneManager.GetActiveScene();
     }
-    
+
+    private void OnEnable()
+    {
+        Bomb.bombKilled += updateScore;
+        Bomb.bombKilled += updateKillCount;
+        Point_Giver.pointPickUp += updateScore;
+    }
+    private void OnDisable()
+    {
+        Bomb.bombKilled -= updateScore;
+        Bomb.bombKilled -= updateKillCount;
+        Point_Giver.pointPickUp -= updateScore;
+    }
+    void updateScore(int scoreAdded)
+    {
+        score += scoreAdded;
+    }
+    void updateKillCount(int unused)
+    {
+        killCount++;
+    }
     void Update()
     {
         if (currentScene.name == "Gameplay")
@@ -37,4 +57,6 @@ public class Game_Manager : MonoBehaviour
             }
         }
     }
+
+
 }

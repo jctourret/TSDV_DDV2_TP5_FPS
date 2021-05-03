@@ -15,6 +15,7 @@ public class PointGiver_Spawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime; 
         if (timer > spawnInterval)
         {
             GameObject go = Instantiate(pointGivePrefab).gameObject;

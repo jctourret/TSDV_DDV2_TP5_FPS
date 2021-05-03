@@ -5,10 +5,10 @@ using UnityEngine;
 public class Point_Giver : MonoBehaviour
 {
     int scoreGain = 50;
-    void OnTriggerEnter(Collider collider)
+    void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Collided");
-        if (collider.tag == "Player")
+        if (collision.collider.tag == "Player")
         {
             Game_Manager.instance.score += scoreGain;
             Destroy(gameObject);

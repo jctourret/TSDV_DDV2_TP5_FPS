@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shoot_Gun : MonoBehaviour
+public class Pistol : MonoBehaviour
 {
     [SerializeField] float targetDistance;
     [SerializeField] float AllowedRange = 5;

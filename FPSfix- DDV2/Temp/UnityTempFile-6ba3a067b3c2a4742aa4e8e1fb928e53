@@ -400,7 +400,6 @@ Assets\Scripts\Kill_Count_Text.cs
 Assets\Scripts\PointGiver_Spawn.cs
 Assets\Scripts\Point_Giver.cs
 Assets\Scripts\Score_Text.cs
-Assets\Scripts\Shoot_Gun.cs
 Assets\Scripts\Spawn_Bombs.cs
 Assets\Scripts\To_Gameplay.cs
 Assets\Scripts\To_Menu.cs

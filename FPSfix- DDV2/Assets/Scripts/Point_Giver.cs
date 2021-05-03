@@ -1,17 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Point_Giver : MonoBehaviour
+public class Point_Giver : MonoBehaviour, IPickable
 {
+    public static event Action<int> pointPickUp;
     int scoreGain = 50;
-    void OnCollisionEnter(Collision collision)
+
+    private void OnEnable()
     {
-        Debug.Log("Collided");
-        if (collision.collider.tag == "Player")
-        {
-            Game_Manager.instance.score += scoreGain;
-            Destroy(gameObject);
-        }
+        pointPickUp += pickUp;
+    }
+    private void OnDisable()
+    {
+        pointPickUp -= pickUp;
+    }
+    public void pickUp(int unsused)
+    {
+        Destroy(gameObject);
+        pointPickUp?.Invoke(scoreGain);
     }
 }

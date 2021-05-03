@@ -8,14 +8,13 @@ public class Player_Character : MonoBehaviour , IChaseable, IDamagable, IKillabl
     public static event Action shootGun;
     private void Update()
     {
-        if (Input.GetKeyDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
             shootGun?.Invoke();
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided");
         IPickable pickUp = collision.collider.GetComponent<IPickable>();
         if (pickUp != null)
         {

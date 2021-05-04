@@ -14,11 +14,13 @@ public class Score_Text : MonoBehaviour
     private void OnEnable()
     {
         Bomb.bombKilled += updateScoreText;
+        Enemy.ghostKilled += updateScoreText;
         Point_Giver.pointPickUp += updateScoreText;
     }
     private void OnDisable()
     {
         Bomb.bombKilled -= updateScoreText;
+        Enemy.ghostKilled -= updateScoreText;
         Point_Giver.pointPickUp -= updateScoreText;
     }
     void updateScoreText(int unused)

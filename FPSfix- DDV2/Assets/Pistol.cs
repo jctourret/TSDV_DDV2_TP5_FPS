@@ -11,11 +11,11 @@ public class Pistol : MonoBehaviour
 
     private void OnEnable()
     {
-        Player_Character.shootGun += shootPistol;
+        Player_Character.shootEquippedGun += shootPistol;
     }
     private void OnDisable()
     {
-        Player_Character.shootGun -= shootPistol;
+        Player_Character.shootEquippedGun -= shootPistol;
     }
     private void Update()
     {

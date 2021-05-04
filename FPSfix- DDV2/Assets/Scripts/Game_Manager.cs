@@ -7,9 +7,10 @@ public class Game_Manager : MonoBehaviour
 {
     public static Game_Manager instance;
     public int score = 0;
-    public int health = 100;
     public int killCount = 0;
     public int ammo = 0;
+
+    int highScore = 0;
 
     Scene currentScene;
 
@@ -26,18 +27,19 @@ public class Game_Manager : MonoBehaviour
         }
         currentScene = SceneManager.GetActiveScene();
     }
-
     private void OnEnable()
     {
         Bomb.bombKilled += updateScore;
         Bomb.bombKilled += updateKillCount;
         Point_Giver.pointPickUp += updateScore;
+        Player_Character.playerDeath += goToCredits;
     }
     private void OnDisable()
     {
         Bomb.bombKilled -= updateScore;
         Bomb.bombKilled -= updateKillCount;
         Point_Giver.pointPickUp -= updateScore;
+        Player_Character.playerDeath -= goToCredits;
     }
     void updateScore(int scoreAdded)
     {
@@ -47,16 +49,15 @@ public class Game_Manager : MonoBehaviour
     {
         killCount++;
     }
-    void Update()
+    void goToCredits()
     {
         if (currentScene.name == "Gameplay")
         {
-            if(health <= 0)
+            if (highScore < score)
             {
-                SceneManager.LoadScene("Credits");
+                highScore = score;
             }
+            SceneManager.LoadScene("Credits");
         }
     }
-
-
 }

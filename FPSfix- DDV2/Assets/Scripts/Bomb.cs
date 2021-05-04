@@ -50,6 +50,7 @@ public class Bomb : MonoBehaviour, IDamagable, IKillable
             if (gO.gameObject != gameObject)
             {
                 IDamagable damaged = gO.GetComponent<IDamagable>();
+                
                 if (damaged != null && gO.tag =="Player")
                 {
                     Debug.Log(gO.name);

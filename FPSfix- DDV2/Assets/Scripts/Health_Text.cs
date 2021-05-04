@@ -10,8 +10,16 @@ public class Health_Text : MonoBehaviour
     {
         healthText = gameObject.GetComponent<Text>();
     }
-    void Update()
+    private void OnEnable()
     {
-        healthText.text = "Health: " + Game_Manager.instance.health;
+        Player_Character.playerRecibesDamage +=setHealth;
+    }
+    private void OnDisable()
+    {
+        Player_Character.playerRecibesDamage -=setHealth;
+    }
+    void setHealth(float health)
+    {
+        healthText.text = "Health: " + health;
     }
 }
